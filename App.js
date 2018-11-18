@@ -25,6 +25,7 @@ export default class TimePicker extends Component {
     onChange: PropTypes.func,
     hoursUnit: PropTypes.string,
     minutesUnit: PropTypes.string,
+    itemStyle: PropTypes.styles,
   }
 
   static defaultProps = {
@@ -33,6 +34,7 @@ export default class TimePicker extends Component {
     onChange: null,
     hoursUnit: '',
     minutesUnit: '',
+    itemStyle: StyleSheet.create({}),
   }
 
   constructor(props) {
@@ -99,6 +101,7 @@ export default class TimePicker extends Component {
         </Picker>
         <Picker
           style={styles.picker}
+          itemStyle={}
           selectedValue={selectedMinutes}
           onValueChange={(itemValue) => this.handleChangeMinutes(itemValue)}
         >
