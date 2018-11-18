@@ -94,6 +94,7 @@ export default class TimePicker extends Component {
       <View style={styles.container}>
         <Picker
           style={styles.picker}
+          itemStyle={this.props.itemStyle}
           selectedValue={selectedHours}
           onValueChange={(itemValue) => this.handleChangeHours(itemValue)}
         >
@@ -101,7 +102,7 @@ export default class TimePicker extends Component {
         </Picker>
         <Picker
           style={styles.picker}
-          itemStyle={}
+          itemStyle={this.props.itemStyle}
           selectedValue={selectedMinutes}
           onValueChange={(itemValue) => this.handleChangeMinutes(itemValue)}
         >
