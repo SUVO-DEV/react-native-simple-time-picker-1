@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const MAX_HOURS = 24;
-const MAX_MINUTES = 60;
+const MAX_HOURS = 23;
+const MAX_MINUTES = 59;
 
 export default class TimePicker extends Component {
   static propTypes = {
