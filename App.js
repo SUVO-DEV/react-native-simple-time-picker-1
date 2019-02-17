@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {
-  Picker,
-  View,
-  StyleSheet,
-} from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Picker, View, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   picker: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 const MAX_HOURS = 23;
@@ -25,68 +21,86 @@ export default class TimePicker extends Component {
     onChange: PropTypes.func,
     hoursUnit: PropTypes.string,
     minutesUnit: PropTypes.string,
-    itemStyle: PropTypes.styles,
-  }
+    itemStyle: PropTypes.styles
+  };
 
   static defaultProps = {
     selectedHours: 0,
     selectedMinutes: 0,
     onChange: null,
-    hoursUnit: '',
-    minutesUnit: '',
-    itemStyle: StyleSheet.create({}),
-  }
+    hoursUnit: "",
+    minutesUnit: "",
+    itemStyle: StyleSheet.create({})
+  };
 
   constructor(props) {
     super(props);
     const { selectedHours, selectedMinutes } = props;
     this.state = {
       selectedHours,
-      selectedMinutes,
+      selectedMinutes
     };
   }
+
+  getDisplayedTimeString = number => {
+    return number < 10 ? `0${number}` : number.toString();
+  };
 
   getHoursItems = () => {
     const items = [];
     const { hoursUnit } = this.props;
     for (let i = 0; i <= MAX_HOURS; i++) {
       items.push(
-        <Picker.Item key={i} value={i} label={`${i.toString()}${hoursUnit}`} />,
+        <Picker.Item
+          key={i}
+          value={i}
+          label={`${this.getDisplayedTimeString(i)}${hoursUnit}`}
+        />
       );
     }
     return items;
-  }
+  };
 
-  getMinutesImtes = () => {
+  getMinutesItems = () => {
     const items = [];
     const { minutesUnit } = this.props;
     for (let i = 0; i <= MAX_MINUTES; i++) {
       items.push(
-        <Picker.Item key={i} value={i} label={`${i.toString()}${minutesUnit}`} />,
+        <Picker.Item
+          key={i}
+          value={i}
+          label={`${this.getDisplayedTimeString(i)}${minutesUnit}`}
+        />
       );
     }
     return items;
-  }
+  };
 
-  handleChangeHours = (itemValue) => {
+  handleChangeHours = itemValue => {
     const { onChange } = this.props;
-    this.setState({
-      selectedHours: itemValue,
-    }, () => {
-      const { selectedHours, selectedMinutes } = this.state;
-      onChange(selectedHours, selectedMinutes);
-    });
-  }
+    this.setState(
+      {
+        selectedHours: itemValue
+      },
+      () => {
+        const { selectedHours, selectedMinutes } = this.state;
+        onChange(selectedHours, selectedMinutes);
+      }
+    );
+  };
 
-  handleChangeMinutes = (itemValue) => {
+  handleChangeMinutes = itemValue => {
     const { onChange } = this.props;
-    this.setState({
-      selectedMinutes: itemValue,
-    }, () => {
-      const { selectedHours, selectedMinutes } = this.state;
-      onChange(selectedHours, selectedMinutes);
-    });
-  }
+    this.setState(
+      {
+        selectedMinutes: itemValue
+      },
+      () => {
+        const { selectedHours, selectedMinutes } = this.state;
+        onChange(selectedHours, selectedMinutes);
+      }
+    );
+  };
 
   render() {
     const { selectedHours, selectedMinutes } = this.state;
@@ -96,7 +110,7 @@ export default class TimePicker extends Component {
           style={styles.picker}
           itemStyle={this.props.itemStyle}
           selectedValue={selectedHours}
-          onValueChange={(itemValue) => this.handleChangeHours(itemValue)}
+          onValueChange={itemValue => this.handleChangeHours(itemValue)}
         >
           {this.getHoursItems()}
         </Picker>
@@ -104,9 +118,9 @@ export default class TimePicker extends Component {
           style={styles.picker}
           itemStyle={this.props.itemStyle}
           selectedValue={selectedMinutes}
-          onValueChange={(itemValue) => this.handleChangeMinutes(itemValue)}
+          onValueChange={itemValue => this.handleChangeMinutes(itemValue)}
         >
-          {this.getMinutesImtes()}
+          {this.getMinutesItems()}
         </Picker>
       </View>
     );
