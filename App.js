@@ -114,6 +114,7 @@ export default class TimePicker extends Component {
         >
           {this.getHoursItems()}
         </Picker>
+        <View><Text>:</Text></View>
         <Picker
           style={styles.picker}
           itemStyle={this.props.itemStyle}
