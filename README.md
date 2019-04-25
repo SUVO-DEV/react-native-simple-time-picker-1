@@ -1,10 +1,9 @@
-![](http://i.imgur.com/3dMcpRM.png)
+Shows 24 hour time from 00:00 - 23:59
 
 ## Install
 
 ```
-npm install react-native-simple-time-picker
-yarn add react-native-simple-time-picker
+npm i react-native-time-picker-simple
 ```
 
 ## Usage

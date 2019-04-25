@@ -26,11 +26,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:SUVO-DEV/react-native-time-picker-simple.git"
+    "url": "git@github.com:SUVO-DEV/react-native-simple-time-picker-1.git"
   },
   "author": "Jack Williams <jackw3434@gmail.com>",
   "license": "MIT",  
-  "homepage": "https://github.com/SUVO-DEV/react-native-time-picker-simple",
+  "homepage": "https://github.com/SUVO-DEV/react-native-simple-time-picker-1",
   "jest": {
     "preset": "jest-expo"
   },
