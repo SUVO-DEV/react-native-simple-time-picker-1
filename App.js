@@ -4,7 +4,11 @@ import { Picker, View, StyleSheet, Text } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row"
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
   picker: {
     flex: 1
